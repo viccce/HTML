@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Let's Run</title>
+</head>
+<body>
+    <div id="bg">
+        <div id="block"></div>
+    </div>
+
+</body>
+<script>
+    document.body.style.margin = "0";
+    var bg = document.getElementById("bg");
+    bg.style.position = "absolute";
+    var block = document.getElementById("block");
+    block.style.position = "relative";
+
+    //初始化
+    var width = 0;
+    var height = 0;
+    var top1 = 0;
+    var left1 = 0;
+    bg.style.width = "100%";
+    bg.style.height = "100%";
+    bg.style.backgroundColor = "#000000";
+    block.style.width = width+"%";
+    block.style.height = height+"%";
+    block.style.backgroundColor = "#ffffff";
+
+
+    bg.setAttribute("onmousemove","getMousePos(event)");
+
+    function getMousePos(event) {
+        var e = event||window.event;
+        //改变block的高度、宽度以及位置
+        width = 150*Math.pow((e.clientX-window.innerWidth/2)/window.innerWidth,2);
+        height = 150*Math.pow((e.clientY-window.innerHeight/2)/window.innerHeight,2);
+        left1 = 50+(1-width)/2;
+        top1 = 50+(1-height)/2;
+        block.style.width = width+"%";
+        block.style.top = top1+"%";
+        block.style.height = height+"%";
+        block.style.left = left1+"%";
+    }
+
+</script>
+</html>
